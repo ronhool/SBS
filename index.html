@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sans Bullshit Sans — шрифт, который говорит правду</title>
+  <meta name="description" content="Кириллический шрифт, который автоматически зачёркивает корпоративный буллшит и показывает, что на самом деле имеется в виду.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+
+  <!-- Cover -->
+  <div class="cover"></div>
+
+  <!-- Page -->
+  <div class="page">
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="page-icon">🚫</div>
+      <h1 class="page-title">Sans Bullshit Sans: кириллическая версия</h1>
+      <p class="page-description">Шрифт, который автоматически <mark>зачёркивает</mark> корпоративный буллшит и показывает, что на самом деле имеется в виду.</p>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Навигация">
+      <span>Проекты</span>
+      <span class="breadcrumb__sep">/</span>
+      <span>Типографика</span>
+      <span class="breadcrumb__sep">/</span>
+      <span class="breadcrumb__current">Sans Bullshit Sans</span>
+    </nav>
+
+    <!-- CTA Row -->
+    <div class="cta-row">
+      <a href="#download" class="btn btn--primary">Скачать шрифт (бесплатно)</a>
+      <a href="#examples" class="btn btn--secondary">Смотреть примеры</a>
+      <a href="#how" class="btn btn--ghost">Почему это работает</a>
+    </div>
+
+    <!-- Callout: hero stat -->
+    <div class="callout callout--yellow">
+      <span class="callout__icon">💡</span>
+      <div class="callout__body">
+        <strong>72% россиян</strong> не понимают суть сообщения из-за канцеляризмов и сленга. Мы сделали шрифт, который визуально отмечает эти слова — чтобы вы видели правду за текстом.
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section: Problem -->
+    <section id="problem">
+      <h2>Проблема: Эпидемия непонятной речи</h2>
+      <p class="text-secondary">По данным исследования «Контур.Толк» (1500 респондентов, август 2025):</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-card__number">72%</div>
+          <div class="stat-card__label">сталкивались с ситуацией, когда из-за формулировки суть терялась</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">28%</div>
+          <div class="stat-card__label">раздражают канцеляризмы<br>«принять к сведению», «прошу рассмотреть»</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">26%</div>
+          <div class="stat-card__label">бесят англицизмы<br>«синкануться», «замэтчиться»</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">14%</div>
+          <div class="stat-card__label">говорят коллегам, что фраза неуместна — остальные молча злятся</div>
+        </div>
+      </div>
+
+      <blockquote class="quote">
+        Мы не замечаем, как привыкаем к абсурду. «Синкануться» вместо «созвонимся». «Принять к сведению» вместо «я прочитал». «Оптимизация штата» вместо «увольнения».<br><br>
+        <strong>Это не просто раздражает. Это мешает работать.</strong>
+      </blockquote>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Section: Solution -->
+    <section id="solution">
+      <h2>Решение: Визуальная цензура</h2>
+      <p>Шрифт работает через OpenType-лигатуры. Когда он встречает слово из словаря буллшита, он заменяет всё слово на цензурную полосу с подписью.</p>
+
+      <div class="example-box" id="examples">
+        <div class="example-box__header">Как это выглядит</div>
+        <div class="example-box__body">
+          «Нам нужно <span class="redacted redacted--red" data-word="синкануться" tabindex="0">████████</span> с коллегами и <span class="redacted redacted--orange" data-word="заапрувить" tabindex="0">████████████</span> процессы, чтобы обеспечить <span class="redacted redacted--red" data-word="синергетическую" tabindex="0">██████████████</span> эффективность.»
+        </div>
+        <div class="example-box__footer">
+          Наведите на полосу, чтобы увидеть скрытое слово. В оригинале: «синкануться», «заапрувить», «синергетическую»
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Section: Why -->
+    <section id="how">
+      <h2>Почему это полезно</h2>
+      <div class="columns">
+        <div class="notion-card">
+          <div class="notion-card__icon">👥</div>
+          <h3>Для команд</h3>
+          <p>Визуально демонстрирует, сколько воды в ваших процессах. Полезно для аудита документов, презентаций, внутренних регламентов.</p>
+        </div>
+        <div class="notion-card">
+          <div class="notion-card__icon">🎯</div>
+          <h3>Для HR</h3>
+          <p>Инструмент для обучения культуре речи. Покажите сотрудникам, как они пишут vs. как это воспринимается.</p>
+        </div>
+        <div class="notion-card">
+          <div class="notion-card__icon">🌐</div>
+          <h3>Для всех</h3>
+          <p>Браузерное расширение и плагин для Word — видеть буллшит в реальном времени, как спеллчекер.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Section: Principles -->
+    <section>
+      <h2>Принципы отбора слов</h2>
+      <p>Мы не цензурируем профессиональную терминологию. Мы отмечаем:</p>
+      <ul class="checklist">
+        <li><span class="check-icon">✕</span> <strong>Размывание ответственности</strong> — «оптимизация» вместо «сокращение»</li>
+        <li><span class="check-icon">✕</span> <strong>Ненужную сложность</strong> — «синкануться» вместо «созвонимся»</li>
+        <li><span class="check-icon">✕</span> <strong>Маскировку давления</strong> — «надо было вчера»</li>
+        <li><span class="check-icon">✕</span> <strong>Инфантилизацию</strong> — «отчётик», «человечек»</li>
+      </ul>
+      <p class="text-caption">Основано на данных исследований HeadHunter, «Контур.Толк» и академических работах по деловой коммуникации.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Section: Tech -->
+    <section>
+      <h2>Технические детали</h2>
+      <div class="prop-list">
+        <div class="prop-item">
+          <span class="prop-item__icon">📦</span>
+          <span class="prop-item__label">Лицензия</span>
+          <span class="prop-item__value">Open Source (Apache License)</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-item__icon">🔤</span>
+          <span class="prop-item__label">Форматы</span>
+          <span class="prop-item__value">TTF, WOFF, WOFF2</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-item__icon">💻</span>
+          <span class="prop-item__label">Совместимость</span>
+          <span class="prop-item__value">Веб, Google Docs, Microsoft Office</span>
+        </div>
+        <div class="prop-item">
+          <span class="prop-item__icon">🧩</span>
+          <span class="prop-item__label">Расширение</span>
+          <span class="prop-item__value">Chrome, Firefox</span>
+        </div>
+      </div>
+      <div class="cta-block" id="download">
+        <a href="#" class="btn btn--primary btn--large">↓ Скачать шрифт бесплатно</a>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Section: Research -->
+    <section>
+      <h2>📊 Исследования</h2>
+      <div class="table-wrap">
+        <table class="notion-table">
+          <thead>
+            <tr>
+              <th>Исследование</th>
+              <th>Источник</th>
+              <th>Данные</th>
+              <th>Ссылка</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>«Контур.Толк»</strong></td>
+              <td>Опрос 1500 россиян, август 2025</td>
+              <td>Топ раздражающих фраз: канцеляризмы (28%), англицизмы (26%), давление (21%). 72% теряют суть.</td>
+              <td><a href="https://rb.ru/" target="_blank" rel="noopener">RB.ru ↗</a></td>
+            </tr>
+            <tr>
+              <td><strong>HeadHunter</strong></td>
+              <td>Опрос сотрудников, 2025</td>
+              <td>«Я вас услышал» — 26%, «человечек» — 29%, «засинкаться» — 22%</td>
+              <td><a href="https://myseldon.com/" target="_blank" rel="noopener">MySeldon ↗</a></td>
+            </tr>
+            <tr>
+              <td><strong>Ростовский госуниверситет</strong></td>
+              <td>Научная статья, 2023</td>
+              <td>Лингвистический анализ деловых фразеологизмов</td>
+              <td><a href="https://cyberleninka.ru/" target="_blank" rel="noopener">CyberLeninka ↗</a></td>
+            </tr>
+            <tr>
+              <td><strong>Кемеровский госуниверситет</strong></td>
+              <td>Методические материалы, 2013</td>
+              <td>Классификация коммуникаций, барьеры в деловом общении</td>
+              <td><a href="https://doc.mspi.moscow/" target="_blank" rel="noopener">Doc.mspi ↗</a></td>
+            </tr>
+            <tr>
+              <td><strong>МИСИС</strong></td>
+              <td>Наблюдения, 2024</td>
+              <td>Речевой портрет студента, проблемы деловой коммуникации</td>
+              <td><a href="https://cyberleninka.ru/" target="_blank" rel="noopener">CyberLeninka ↗</a></td>
+            </tr>
+            <tr>
+              <td><strong>SuperJob</strong></td>
+              <td>Опрос, 2020</td>
+              <td>Игнорирование сообщений (7%), лень (6%), звонки в нерабочее (4%)</td>
+              <td><a href="https://incrussia.ru/" target="_blank" rel="noopener">IncRussia ↗</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Section: Dictionary -->
+    <section>
+      <h2>📖 Словарь буллшита</h2>
+      <p>Нажмите на группу, чтобы развернуть словарь.</p>
+
+      <!-- Toggle A -->
+      <details class="toggle" open>
+        <summary class="toggle__header">
+          <span class="toggle__arrow">▸</span>
+          <span class="toggle__badge toggle__badge--red">А</span>
+          Канцелярский буллшит
+          <span class="toggle__meta">28% респондентов</span>
+        </summary>
+        <div class="toggle__body">
+          <table class="notion-table notion-table--compact">
+            <thead><tr><th>Слово/фраза</th><th>Что маскирует</th><th>Почему в списке</th></tr></thead>
+            <tbody>
+              <tr><td>принять к сведению</td><td>Я прочитал, но ничего не буду делать</td><td>Пустая формула</td></tr>
+              <tr><td>прошу рассмотреть возможность</td><td>Сделайте это</td><td>Искусственное усложнение</td></tr>
+              <tr><td>ожидаем вашей позиции</td><td>Ответьте уже</td><td>Пассивная агрессия</td></tr>
+              <tr><td>по существу заданных вопросов</td><td>По вопросам</td><td>Избыточная канцелярность</td></tr>
+              <tr><td>в соответствии с вышеизложенным</td><td>Как написано выше</td><td>Мёртвый шаблон</td></tr>
+              <tr><td>в целях совершенствования</td><td>Для улучшения</td><td>Бюрократическая абстракция</td></tr>
+              <tr><td>настоящим уведомляем</td><td>Сообщаем</td><td>Фальшивая важность</td></tr>
+              <tr><td>просим ознакомиться</td><td>Прочитайте</td><td>Формальное давление</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- Toggle B -->
+      <details class="toggle">
+        <summary class="toggle__header">
+          <span class="toggle__arrow">▸</span>
+          <span class="toggle__badge toggle__badge--orange">Б</span>
+          IT-англицизмы
+          <span class="toggle__meta">26% респондентов, 22% HeadHunter</span>
+        </summary>
+        <div class="toggle__body">
+          <table class="notion-table notion-table--compact">
+            <thead><tr><th>Слово</th><th>Что означает</th><th>Проблема</th></tr></thead>
+            <tbody>
+              <tr><td>синкануться / засинкаться</td><td>Созвониться</td><td>Длиннее оригинала, непонятно вне IT</td></tr>
+              <tr><td>заапрувить</td><td>Утвердить</td><td>Замена простого русского слова</td></tr>
+              <tr><td>отфидбечить</td><td>Дать обратную связь</td><td>Двойной абсурд</td></tr>
+              <tr><td>замэтчиться</td><td>Связаться / договориться</td><td>Непонятно без контекста</td></tr>
+              <tr><td>скипнуть</td><td>Пропустить</td><td>Не все понимают</td></tr>
+              <tr><td>закоммититься</td><td>Пообещать / взять на себя</td><td>Только для разработчиков</td></tr>
+              <tr><td>пошэрить</td><td>Поделиться</td><td>«Поделиться» — нормальное слово</td></tr>
+              <tr><td>чекнуть</td><td>Проверить</td><td>Замена без причины</td></tr>
+              <tr><td>задеплоить</td><td>Запустить / развернуть</td><td>Жаргон за рамками профессии</td></tr>
+              <tr><td>откатить</td><td>Отменить / вернуть</td><td>Непонятно вне IT</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- Toggle C -->
+      <details class="toggle">
+        <summary class="toggle__header">
+          <span class="toggle__arrow">▸</span>
+          <span class="toggle__badge toggle__badge--red">В</span>
+          Давление под видом срочности
+          <span class="toggle__meta">21% респондентов, 35% юристов</span>
+        </summary>
+        <div class="toggle__body">
+          <table class="notion-table notion-table--compact">
+            <thead><tr><th>Фраза</th><th>Что на самом деле</th><th>Почему токсично</th></tr></thead>
+            <tbody>
+              <tr><td>надо было вчера</td><td>Сделай срочно</td><td>Создаёт тревожность</td></tr>
+              <tr><td>asap / асап</td><td>Как можно скорее</td><td>Не конкретно, создаёт стресс</td></tr>
+              <tr><td>прямо сейчас</td><td>Немедленно</td><td>Игнорирование чужих приоритетов</td></tr>
+              <tr><td>горящий дедлайн</td><td>Срочно</td><td>«Срочность» обесценивает слова</td></tr>
+              <tr><td>аврал</td><td>Чрезвычайная ситуация</td><td>Хронический аврал = плохое планирование</td></tr>
+              <tr><td>чем быстрее, тем лучше</td><td>Нет конкретики</td><td>Давление без ясности</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- Toggle D -->
+      <details class="toggle">
+        <summary class="toggle__header">
+          <span class="toggle__arrow">▸</span>
+          <span class="toggle__badge toggle__badge--yellow">Г</span>
+          Инфантилизация
+          <span class="toggle__meta">20% респондентов, 29% HeadHunter</span>
+        </summary>
+        <div class="toggle__body">
+          <table class="notion-table notion-table--compact">
+            <thead><tr><th>Слово</th><th>Нормальная форма</th><th>Почему раздражает</th></tr></thead>
+            <tbody>
+              <tr><td>человечек</td><td>Человек / коллега</td><td>Уменьшительная форма в деловом контексте</td></tr>
+              <tr><td>задачка</td><td>Задача</td><td>Минимизация важности работы</td></tr>
+              <tr><td>отчётик</td><td>Отчёт</td><td>Неуважение к документу</td></tr>
+              <tr><td>коллегушки</td><td>Коллеги</td><td>Фальшивая дружелюбность</td></tr>
+              <tr><td>письмецо</td><td>Письмо</td><td>Непрофессионально</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- Toggle E -->
+      <details class="toggle">
+        <summary class="toggle__header">
+          <span class="toggle__arrow">▸</span>
+          <span class="toggle__badge toggle__badge--purple">Д</span>
+          Псевдопсихология и HR-буллшит
+          <span class="toggle__meta">особенно бесит образованных</span>
+        </summary>
+        <div class="toggle__body">
+          <table class="notion-table notion-table--compact">
+            <thead><tr><th>Фраза</th><th>Что означает</th><th>Проблема</th></tr></thead>
+            <tbody>
+              <tr><td>выйти из зоны комфорта</td><td>Сделать что-то неприятное</td><td>Клише, игнорирующее реальные барьеры</td></tr>
+              <tr><td>собрать энергию</td><td>Отдохнуть / восстановиться</td><td>Мистификация простых вещей</td></tr>
+              <tr><td>перегрев команды</td><td>Усталость сотрудников</td><td>Эвфемизм для перегрузки</td></tr>
+              <tr><td>эмпат-кол</td><td>Разговор с сочувствием</td><td>Избыточная терминология</td></tr>
+              <tr><td>пейнпоинт</td><td>Проблема / боль</td><td>Замена понятного слова</td></tr>
+              <tr><td>ретроградный Меркурий</td><td>Случайность / неудача</td><td>Отрицание ответственности</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- Toggle F -->
+      <details class="toggle">
+        <summary class="toggle__header">
+          <span class="toggle__arrow">▸</span>
+          <span class="toggle__badge toggle__badge--gray">Е</span>
+          Пассивный саботаж
+          <span class="toggle__meta">19% респондентов</span>
+        </summary>
+        <div class="toggle__body">
+          <table class="notion-table notion-table--compact">
+            <thead><tr><th>Фраза</th><th>Что означает</th><th>Почему разрушительно</th></tr></thead>
+            <tbody>
+              <tr><td>мне за это не платят</td><td>Это не моя работа</td><td>Разрушение командной работы</td></tr>
+              <tr><td>это не в моей зоне ответственности</td><td>Не буду помогать</td><td>Барьер для коллаборации</td></tr>
+              <tr><td>обратитесь к моему руководителю</td><td>Отстань</td><td>Перекладывание ответственности</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Exceptions -->
+    <section>
+      <h2>Исключения (что НЕ входит в словарь)</h2>
+      <div class="callout callout--green">
+        <span class="callout__icon">✅</span>
+        <div class="callout__body">
+          <strong>Профессиональные термины с чётким значением:</strong> дебет/кредит, баланс, актив (бухгалтерия); контрагент, договор, сделка (юриспруденция); менеджер, проект, офис (уже ассимилированы).
+        </div>
+      </div>
+      <div class="callout callout--blue">
+        <span class="callout__icon">🔵</span>
+        <div class="callout__body">
+          <strong>Нейтральные англицизмы:</strong> фидбэк, дедлайн, митинг — когда экономят место и уже нейтральны в контексте.
+        </div>
+      </div>
+      <div class="callout callout--purple">
+        <span class="callout__icon">💻</span>
+        <div class="callout__body">
+          <strong>IT-термины внутри IT-команд:</strong> баг, фича, коммит — нормально между разработчиками. Проблема — в общем корпоративном контексте.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Gradation -->
+    <section>
+      <h2>Градация цензуры</h2>
+      <div class="gradation-list">
+        <div class="gradation-row gradation-row--red">
+          <div class="gradation-row__badge">БУЛЛШИТ</div>
+          <div class="gradation-row__level">🔴 Критический</div>
+          <div class="gradation-row__desc">«оптимизация штата», «принять к сведению»</div>
+        </div>
+        <div class="gradation-row gradation-row--orange">
+          <div class="gradation-row__badge">СЛОЖНО</div>
+          <div class="gradation-row__level">🟡 Средний</div>
+          <div class="gradation-row__desc">«синкануться», «заапрувить»</div>
+        </div>
+        <div class="gradation-row gradation-row--green">
+          <div class="gradation-row__badge">МЕМ</div>
+          <div class="gradation-row__level">🟢 Мягкий</div>
+          <div class="gradation-row__desc">«вкусный» (о дизайне), «ретроградный Меркурий»</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <div class="divider"></div>
+      <p>Sans Bullshit Sans — шрифт, который говорит правду. Open Source, Apache License.</p>
+    </footer>
+
+  </div><!-- /.page -->
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>
