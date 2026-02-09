@@ -1,245 +1,204 @@
 /* ============================================
-   Sans Bullshit Sans — Notion-style Interactions
+   SANS BULLSHIT SANS — ЖЁЛТАЯ ПРЕССА / BRUTALISM
    ============================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-
-  // -----------------------------------------------
-  // 1. Scroll-reveal
-  // -----------------------------------------------
-  const revealEls = document.querySelectorAll(
-    'section, .callout, .stat-card, .notion-card, .example-box, .gradation-row, .toggle, .prop-item'
-  );
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal--visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
-  );
-
-  revealEls.forEach((el, i) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = `${Math.min(i * 0.04, 0.3)}s`;
-    observer.observe(el);
+// -----------------------------------------------
+// 1. Censored spans — click to reveal
+// -----------------------------------------------
+document.querySelectorAll('.censored').forEach((el) => {
+  el.addEventListener('click', () => {
+    el.style.color = '#fff';
+    el.style.background = 'var(--red)';
+    el.textContent = el.dataset.word;
+    el.style.cursor = 'default';
   });
+});
 
-  // Fallback: reveal all after 1.5s
-  setTimeout(() => {
-    document.querySelectorAll('.reveal:not(.reveal--visible)').forEach((el) => {
-      el.classList.add('reveal--visible');
-    });
-  }, 1500);
+// -----------------------------------------------
+// 2. Toggle arrows (visual feedback on open/close)
+// -----------------------------------------------
+document.querySelectorAll('.toggle').forEach((toggle) => {
+  toggle.addEventListener('toggle', () => {
+    // CSS handles open styling, nothing extra needed
+  });
+});
 
-  // -----------------------------------------------
-  // 2. Smooth-scroll for anchor links
-  // -----------------------------------------------
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const id = anchor.getAttribute('href');
-      if (!id || id === '#') return;
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// -----------------------------------------------
+// 3. Scroll reveal — brutalist fade-in
+// -----------------------------------------------
+const revealElements = document.querySelectorAll(
+  'section, .stat-row, .evidence-box, .columns-3, .spec-grid, .gradation-stack, .exceptions-row, .pullquote'
+);
+
+revealElements.forEach((el) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'none';
+});
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        observer.unobserve(el);
       }
     });
-  });
+  },
+  { threshold: 0.05 }
+);
 
-  // -----------------------------------------------
-  // 3. Stat counter animation
-  // -----------------------------------------------
-  const statObserver = new IntersectionObserver(
+revealElements.forEach((el) => observer.observe(el));
+
+// Fallback: force reveal after 2s for embedded browsers
+setTimeout(() => {
+  revealElements.forEach((el) => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  });
+}, 2000);
+
+// -----------------------------------------------
+// 4. Stat counter animation
+// -----------------------------------------------
+document.querySelectorAll('.stat-block__num').forEach((el) => {
+  const target = parseInt(el.textContent, 10);
+  if (isNaN(target)) return;
+  el.textContent = '0%';
+  let started = false;
+
+  const countObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const numEl = entry.target.querySelector('.stat-card__number');
-          if (!numEl) return;
-          const text = numEl.textContent.trim();
-          const match = text.match(/^(\d+)/);
-          if (match) {
-            const target = parseInt(match[1], 10);
-            const suffix = text.replace(/^\d+/, '');
-            animateCounter(numEl, target, suffix);
+      if (entries[0].isIntersecting && !started) {
+        started = true;
+        let current = 0;
+        const step = Math.ceil(target / 30);
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(interval);
           }
-          statObserver.unobserve(entry.target);
-        }
-      });
+          el.textContent = current + '%';
+        }, 30);
+        countObserver.unobserve(el);
+      }
     },
     { threshold: 0.5 }
   );
+  countObserver.observe(el);
+});
 
-  document.querySelectorAll('.stat-card').forEach((card) => statObserver.observe(card));
+// -----------------------------------------------
+// 5. Interactive demo — bullshit censor
+// -----------------------------------------------
+const BULLSHIT_WORDS = [
+  // Канцеляризмы
+  'принять к сведению', 'прошу рассмотреть возможность', 'ожидаем вашей позиции',
+  'по существу заданных вопросов', 'в соответствии с вышеизложенным',
+  'в целях совершенствования', 'настоящим уведомляем', 'просим ознакомиться',
+  // IT-англицизмы
+  'синкануться', 'засинкаться', 'синк', 'заапрувить', 'отфидбечить',
+  'замэтчиться', 'скипнуть', 'закоммититься', 'пошэрить', 'чекнуть',
+  'задеплоить', 'откатить',
+  // Давление
+  'надо было вчера', 'прямо сейчас', 'горящий дедлайн', 'аврал',
+  'чем быстрее, тем лучше',
+  // Инфантилизация
+  'человечек', 'задачка', 'отчётик', 'коллегушки', 'письмецо',
+  // Псевдопсихология / HR
+  'выйти из зоны комфорта', 'собрать энергию', 'перегрев команды',
+  'эмпат-кол', 'пейнпоинт', 'ретроградный Меркурий',
+  // Саботаж
+  'мне за это не платят', 'это не в моей зоне ответственности',
+  'обратитесь к моему руководителю',
+  // Прочее
+  'синергия', 'синергетическ', 'эффективность', 'инновационн',
+  'диджитал', 'прорывн', 'дисраптивн', 'agile', 'asap', 'асап',
+  'оптимизация штата',
+];
 
-  function animateCounter(el, target, suffix) {
-    const duration = 900;
-    const start = performance.now();
-    const ease = (t) => 1 - Math.pow(1 - t, 3);
+BULLSHIT_WORDS.sort((a, b) => b.length - a.length);
 
-    function tick(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = Math.round(ease(progress) * target);
-      el.textContent = value + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
+const demoInput = document.getElementById('demo-input');
+const demoBtn = document.getElementById('demo-btn');
+const demoOutput = document.getElementById('demo-output');
+const demoStats = document.getElementById('demo-stats');
+
+if (demoBtn && demoInput && demoOutput) {
+  demoBtn.addEventListener('click', censorText);
+  demoInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      censorText();
     }
-    requestAnimationFrame(tick);
+  });
+}
+
+function censorText() {
+  const raw = demoInput.value.trim();
+  if (!raw) {
+    demoOutput.classList.remove('demo-output--visible');
+    if (demoStats) demoStats.classList.remove('demo-stats--visible');
+    return;
   }
 
-  // -----------------------------------------------
-  // 4. Redacted: click to reveal/hide
-  // -----------------------------------------------
-  document.querySelectorAll('.redacted').forEach((el) => {
-    const originalHTML = el.innerHTML;
-    const word = el.dataset.word;
-    let revealed = false;
+  // Work on raw text first, collect replacements, then escape & assemble
+  let matchCount = 0;
+  const foundWords = [];
+  const placeholders = [];
 
-    el.addEventListener('click', () => {
-      revealed = !revealed;
-      if (revealed) {
-        el.textContent = word;
-        el.style.color = '#fff';
-      } else {
-        el.innerHTML = originalHTML;
-        el.style.color = '';
-      }
+  // Mark matches in raw text using null-byte delimited placeholders
+  let working = raw;
+  BULLSHIT_WORDS.forEach((word) => {
+    const pattern = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${pattern}[а-яёА-ЯЁ]*)`, 'gi');
+    working = working.replace(regex, (match) => {
+      matchCount++;
+      if (!foundWords.includes(word)) foundWords.push(word);
+      const idx = placeholders.length;
+      placeholders.push(match);
+      return `\x00${idx}\x00`;
     });
   });
 
-  // -----------------------------------------------
-  // 5. Interactive demo — bullshit censor
-  // -----------------------------------------------
-  const BULLSHIT_WORDS = [
-    // Канцеляризмы
-    'принять к сведению', 'прошу рассмотреть возможность', 'ожидаем вашей позиции',
-    'по существу заданных вопросов', 'в соответствии с вышеизложенным',
-    'в целях совершенствования', 'настоящим уведомляем', 'просим ознакомиться',
-    // IT-англицизмы
-    'синкануться', 'засинкаться', 'синк', 'заапрувить', 'отфидбечить',
-    'замэтчиться', 'скипнуть', 'закоммититься', 'пошэрить', 'чекнуть',
-    'задеплоить', 'откатить',
-    // Давление
-    'надо было вчера', 'горящий дедлайн', 'аврал',
-    'чем быстрее, тем лучше', 'прямо сейчас',
-    // Инфантилизация
-    'человечек', 'задачка', 'отчётик', 'коллегушки', 'письмецо',
-    // HR-буллшит
-    'выйти из зоны комфорта', 'зоны комфорта', 'собрать энергию',
-    'перегрев команды', 'эмпат-кол', 'пейнпоинт', 'ретроградный Меркурий',
-    // Саботаж
-    'мне за это не платят', 'это не в моей зоне ответственности',
-    'обратитесь к моему руководителю',
-    // Общий буллшит
-    'синергия', 'синергетическ', 'эффективность', 'инновационные решения',
-    'инновационн', 'диджитал', 'прорывной', 'прорывн', 'оптимизация',
-    'трансформация', 'масштабирование', 'экосистема', 'стейкхолдер',
-    'бенчмарк', 'роадмап', 'фреймворк', 'воркшоп', 'брейншторм',
-    'имплементация', 'левередж', 'нетворкинг', 'питч', 'скейлить',
-    'дисраптивн', 'agile', 'asap', 'асап',
-  ];
+  // Now escape the remaining text (placeholders won't be affected since they use \x00)
+  let escaped = escapeHtml(working);
 
-  // Sort by length descending so longer phrases match first
-  BULLSHIT_WORDS.sort((a, b) => b.length - a.length);
+  // Replace placeholders with actual HTML spans
+  escaped = escaped.replace(/\x00(\d+)\x00/g, (_, idxStr) => {
+    const orig = placeholders[parseInt(idxStr, 10)];
+    const bar = '\u2588'.repeat(Math.max(orig.length, 3));
+    return `<span class="bs-word" data-original="${escapeHtml(orig)}">${bar}</span>`;
+  });
 
-  const demoInput = document.getElementById('demo-input');
-  const demoBtn = document.getElementById('demo-btn');
-  const demoOutput = document.getElementById('demo-output');
-  const demoStats = document.getElementById('demo-stats');
+  demoOutput.innerHTML = escaped;
+  demoOutput.classList.add('demo-output--visible');
 
-  if (demoBtn && demoInput && demoOutput) {
-    demoBtn.addEventListener('click', censorText);
-
-    // Also censor on Ctrl+Enter
-    demoInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        censorText();
-      }
-    });
+  if (demoStats) {
+    const wordCount = raw.split(/\s+/).filter(Boolean).length;
+    const pct = wordCount > 0 ? Math.round((matchCount / wordCount) * 100) : 0;
+    demoStats.innerHTML = `
+      <span>ОБНАРУЖЕНО: <span class="demo-stats__count">${matchCount} ${pluralize(matchCount, 'совпадение', 'совпадения', 'совпадений')}</span></span>
+      <span>УРОВЕНЬ БУЛЛШИТА: <span class="demo-stats__count">${pct}%</span></span>
+    `;
+    demoStats.classList.add('demo-stats--visible');
   }
+}
 
-  function censorText() {
-    const raw = demoInput.value.trim();
-    if (!raw) {
-      demoOutput.classList.remove('demo-output--visible');
-      demoStats.classList.remove('demo-stats--visible');
-      return;
-    }
+function escapeHtml(str) {
+  const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+  return str.replace(/[&<>"']/g, (c) => map[c]);
+}
 
-    let result = raw;
-    let matchCount = 0;
-    const foundWords = [];
-
-    // Build regex: match each bullshit word case-insensitively
-    BULLSHIT_WORDS.forEach((word) => {
-      const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(`(${escaped}[а-яё]*)`, 'gi');
-
-      result = result.replace(regex, (match) => {
-        matchCount++;
-        if (!foundWords.includes(word)) foundWords.push(word);
-        const bar = '█'.repeat(Math.max(match.length, 3));
-        return `<span class="bs-word" data-original="${match}">${bar}</span>`;
-      });
-    });
-
-    // Escape HTML in remaining text (but preserve our spans)
-    // Since we're replacing in raw text, we need a different approach:
-    // Re-do: escape first, then replace
-    let escaped = escapeHtml(raw);
-    matchCount = 0;
-    const foundWords2 = [];
-
-    BULLSHIT_WORDS.forEach((word) => {
-      const esc = escapeHtml(word);
-      const pattern = esc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(`(${pattern}[а-яёА-ЯЁ]*)`, 'gi');
-
-      escaped = escaped.replace(regex, (match) => {
-        matchCount++;
-        if (!foundWords2.includes(word)) foundWords2.push(word);
-        const bar = '█'.repeat(Math.max(match.length, 3));
-        return `<span class="bs-word" data-original="${match}">${bar}</span>`;
-      });
-    });
-
-    demoOutput.innerHTML = escaped;
-    demoOutput.classList.add('demo-output--visible');
-
-    // Stats
-    if (matchCount > 0) {
-      const pct = Math.round((matchCount / raw.split(/\s+/).length) * 100);
-      demoStats.innerHTML = `
-        <span class="demo-stats__item">
-          <span class="demo-stats__count">${matchCount}</span> ${pluralize(matchCount, 'слово', 'слова', 'слов')} зацензурировано
-        </span>
-        <span class="demo-stats__item">
-          ~<span class="demo-stats__count">${pct}%</span> буллшита в тексте
-        </span>
-      `;
-      demoStats.classList.add('demo-stats--visible');
-    } else {
-      demoStats.innerHTML = 'Буллшит не обнаружен. Вы — редкий человек!';
-      demoStats.classList.add('demo-stats--visible');
-    }
-  }
-
-  function escapeHtml(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  function pluralize(n, one, few, many) {
-    const abs = Math.abs(n) % 100;
-    const last = abs % 10;
-    if (abs > 10 && abs < 20) return many;
-    if (last > 1 && last < 5) return few;
-    if (last === 1) return one;
-    return many;
-  }
-
-});
+function pluralize(n, one, few, many) {
+  const abs = Math.abs(n) % 100;
+  const n1 = abs % 10;
+  if (abs > 10 && abs < 20) return many;
+  if (n1 > 1 && n1 < 5) return few;
+  if (n1 === 1) return one;
+  return many;
+}
