@@ -769,6 +769,131 @@ section > p {
 }
 
 /* ============================================
+   DEMO AREA
+   ============================================ */
+
+.demo-area {
+  margin: 1rem 0;
+}
+
+.demo-textarea {
+  display: block;
+  width: 100%;
+  min-height: 130px;
+  padding: 0.8rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+.demo-textarea::placeholder {
+  color: var(--text-caption);
+}
+
+.demo-textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(82, 156, 202, 0.15);
+}
+
+.demo-area .btn {
+  margin-top: 0.6rem;
+}
+
+.demo-output {
+  margin-top: 0.8rem;
+  padding: 1rem 1.2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  display: none;
+}
+
+.demo-output--visible {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.demo-output .bs-word {
+  display: inline;
+  background: var(--text);
+  color: var(--text);
+  padding: 0.1em 0.25em;
+  border-radius: 2px;
+  cursor: help;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.demo-output .bs-word:hover {
+  color: #fff;
+}
+
+.demo-output .bs-word::after {
+  content: attr(data-original);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%) translateY(3px);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: #fff;
+  background: var(--text);
+  padding: 0.2em 0.5em;
+  border-radius: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s, transform 0.15s;
+  z-index: 10;
+  border: 1px solid var(--border);
+}
+
+.demo-output .bs-word:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.demo-stats {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-caption);
+  display: none;
+}
+
+.demo-stats--visible {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.demo-stats__item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.demo-stats__count {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--red);
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 

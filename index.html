@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -95,6 +95,36 @@
         </div>
         <div class="example-box__footer">
           Наведите на полосу, чтобы увидеть скрытое слово. В оригинале: «синкануться», «заапрувить», «синергетическую»
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Section: Demo -->
+    <section id="demo">
+      <h2>✍️ Попробуйте на своём тексте</h2>
+      <p>Вставьте сюда любимый пресс-релиз, отчёт или презентацию. Шрифт заменит триггерные слова на чёрные плашки.</p>
+
+      <div class="demo-area">
+        <textarea
+          id="demo-input"
+          class="demo-textarea"
+          rows="5"
+          placeholder="Напишите немного корпоративного буллшита..."
+        >Коллеги, нам нужно синкануться по проекту и заапрувить новую стратегию. Прошу рассмотреть возможность выйти из зоны комфорта и закоммититься на инновационные решения. Надо было вчера. Человечек из отдела пошэрит отчётик asap.</textarea>
+
+        <button id="demo-btn" class="btn btn--primary" type="button">Цензурировать</button>
+
+        <div id="demo-output" class="demo-output"></div>
+
+        <div class="demo-stats" id="demo-stats"></div>
+      </div>
+
+      <div class="callout callout--yellow" style="margin-top: 0.8rem;">
+        <span class="callout__icon">⚠️</span>
+        <div class="callout__body">
+          <strong>Важно:</strong> эффект работает в средах, которые поддерживают OpenType-лигатуры. В этом демо — только имитация оформления.
         </div>
       </div>
     </section>
@@ -432,6 +462,6 @@
 
   </div><!-- /.page -->
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
