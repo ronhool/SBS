@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SANS BULLSHIT SANS — ШРИФТ, КОТОРЫЙ ГОВОРИТ ПРАВДУ</title>
+  <title>SANS BULLSHIT SANS — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ</title>
   <meta name="description" content="Кириллический шрифт, который автоматически помечает корпоративный буллшит.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +26,9 @@
     <header class="masthead">
       <div class="masthead__rule masthead__rule--thick"></div>
       <div class="masthead__dateline">
-        <span>ТОМ I &mdash; ВЫПУСК №1</span>
-        <span>ФЕВРАЛЬ 2026</span>
-        <span>ЦЕНА: БЕСПЛАТНО</span>
+        <span>VER 2.0</span>
+        <span id="masthead-date">ФЕВРАЛЬ 2026</span>
+        <span>ЦЕНА: FREE</span>
       </div>
       <div class="masthead__rule"></div>
       <h1 class="masthead__title">Sans<br>Bullshit Sans<br>Cirillyc</h1>
@@ -39,8 +39,8 @@
 
     <!-- CTA -->
     <div class="cta-banner">
-      <a href="#download" class="brutal-btn">СКАЧАТЬ ШРИФТ (БЕСПЛАТНО)</a>
-      <a href="#solution" class="brutal-btn brutal-btn--outline">ПРИМЕРЫ</a>
+      <a href="https://github.com/ronhool/SansBullshitSans-CYR/raw/main/SansBullshitSansCYR.ttf" download="SansBullshitSansCYR.ttf" class="brutal-btn">СКАЧАТЬ ШРИФТ (БЕСПЛАТНО)</a>
+      <a href="#demo" class="brutal-btn brutal-btn--outline">ПРИМЕРЫ</a>
       <a href="#how" class="brutal-btn brutal-btn--outline">ПОЧЕМУ ЭТО РАБОТАЕТ</a>
     </div>
 
@@ -83,23 +83,6 @@
 
     <div class="rule"></div>
 
-    <!-- Solution -->
-    <section id="solution">
-      <div class="section-label">КАК ЭТО РАБОТАЕТ</div>
-      <h2 class="headline headline--sm">ВИЗУАЛЬНАЯ ЦЕНЗУРА</h2>
-      <p>Шрифт работает через OpenType-лигатуры. Когда он встречает слово из словаря буллшита, он помечает всё слово плашкой.</p>
-
-      <div class="evidence-box" id="examples">
-        <div class="evidence-box__stamp">ВЕЩДОК №1</div>
-        <div class="evidence-box__body">
-          «Нам нужно <span class="censored" data-word="синкануться" tabindex="0">чушь</span> с коллегами и <span class="censored" data-word="заапрувить" tabindex="0">чушь</span> процессы, чтобы обеспечить <span class="censored" data-word="синергетическую" tabindex="0">чушь</span> эффективность.»
-        </div>
-        <div class="evidence-box__note">НАВЕДИТЕ НА ПОЛОСУ — УВИДИТЕ СКРЫТОЕ СЛОВО. НАЖМИТЕ — РАСКРОЕТСЯ.</div>
-      </div>
-    </section>
-
-    <div class="rule"></div>
-
     <!-- Demo -->
     <section id="demo">
       <div class="section-label">ИНТЕРАКТИВ</div>
@@ -131,7 +114,7 @@
         </div>
         <div class="col-card">
           <h3>ДЛЯ ВСЕХ</h3>
-          <p>Браузерное расширение и плагин для Word — видеть буллшит в реальном времени, как спеллчекер. <span class="in-dev">В разработке</span></p>
+          <p>Браузерное расширение и плагин для Word — видеть буллшит в реальном времени, как проверка орфографии. <span class="in-dev">В разработке</span></p>
         </div>
       </div>
     </section>
@@ -165,7 +148,8 @@
         <div class="spec-item"><span class="spec-item__key">РАСШИРЕНИЕ</span><span class="spec-item__val">В разработке</span></div>
       </div>
       <div class="cta-banner" id="download">
-        <a href="#" class="brutal-btn brutal-btn--big">↓ СКАЧАТЬ ШРИФТ БЕСПЛАТНО</a>
+        <a href="https://github.com/ronhool/SansBullshitSans-CYR/raw/main/SansBullshitSansCYR.ttf" download="SansBullshitSansCYR.ttf" class="brutal-btn brutal-btn--big">↓ СКАЧАТЬ ШРИФТ БЕСПЛАТНО</a>
+        <p class="download-formats">Другие форматы: <a href="https://github.com/ronhool/SansBullshitSans-CYR/raw/main/SansBullshitSansCYR.woff2" download="SansBullshitSansCYR.woff2">WOFF2</a>, <a href="https://github.com/ronhool/SansBullshitSans-CYR/raw/main/SansBullshitSansCYR.woff" download="SansBullshitSansCYR.woff">WOFF</a></p>
       </div>
     </section>
 
@@ -299,8 +283,9 @@
     <!-- Footer -->
     <footer class="paper-footer">
       <div class="rule rule--double"></div>
-      <p>SANS BULLSHIT SANS — ШРИФТ, КОТОРЫЙ ГОВОРИТ ПРАВДУ. OPEN SOURCE. APACHE LICENSE.</p>
-      <p class="fine-print">*** ПЕРЕПЕЧАТКА РАЗРЕШЕНА И ПРИВЕТСТВУЕТСЯ ***</p>
+      <p>SANS BULLSHIT SANS — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ. OPEN SOURCE. APACHE LICENSE.</p>
+      <p class="fine-print">*** ПЕРЕСЫЛКА РАЗРЕШЕНА И ПРИВЕТСТВУЕТСЯ ***</p>
+      <p class="paper-footer__copyright"><span class="paper-footer__copyright-symbol">©</span> <a href="https://t.me/typefeed" target="_blank" rel="noopener">@typefeed</a> <span id="footer-year">2025–2026</span>. All rights reserved.</p>
     </footer>
 
   </div><!-- /.paper -->

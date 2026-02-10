@@ -62,7 +62,7 @@ a {
   text-underline-offset: 2px;
   cursor: pointer;
 }
-a:hover { background: var(--red); color: var(--white); text-decoration: none; }
+a:hover { background: transparent; color: blue; text-decoration: underline; }
 
 strong { font-weight: 700; }
 img { max-width: 100%; }
@@ -264,7 +264,22 @@ img { max-width: 100%; }
   flex-wrap: wrap;
   gap: 0.6rem;
   justify-content: center;
+  align-items: center;
   padding: 1.25rem 0;
+}
+
+.cta-banner .download-formats {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.cta-banner .download-formats a {
+  margin: 0 0.2em;
 }
 
 /* ============================================
@@ -1003,6 +1018,21 @@ section > p {
   letter-spacing: 0.06em;
   line-height: 1.35;
   margin-bottom: 0.25rem;
+}
+
+.paper-footer__copyright {
+  font-family: var(--mono) !important;
+  font-weight: 400 !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.paper-footer__copyright-symbol {
+  font-size: 1.6em;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 /* ============================================

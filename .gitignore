@@ -1,6 +1,7 @@
 .DS_Store
 .cursor/
 .agents/
+fonts/GIT/
 *.swp
 *.swo
 *~

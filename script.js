@@ -3,6 +3,22 @@
    ============================================ */
 
 // -----------------------------------------------
+// 0. Masthead date — текущие месяц и год
+// -----------------------------------------------
+const MONTHS_RU = ['ЯНВАРЬ', 'ФЕВРАЛЬ', 'МАРТ', 'АПРЕЛЬ', 'МАЙ', 'ИЮНЬ', 'ИЮЛЬ', 'АВГУСТ', 'СЕНТЯБРЬ', 'ОКТЯБРЬ', 'НОЯБРЬ', 'ДЕКАБРЬ'];
+const mastheadDateEl = document.getElementById('masthead-date');
+if (mastheadDateEl) {
+  const d = new Date();
+  mastheadDateEl.textContent = MONTHS_RU[d.getMonth()] + ' ' + d.getFullYear();
+}
+
+const footerYearEl = document.getElementById('footer-year');
+if (footerYearEl) {
+  const y = new Date().getFullYear();
+  footerYearEl.textContent = '2025–' + y;
+}
+
+// -----------------------------------------------
 // 1. Censored spans — click to reveal
 // -----------------------------------------------
 document.querySelectorAll('.censored').forEach((el) => {
