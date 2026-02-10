@@ -4,16 +4,44 @@
    Thick borders. Giant type. Raw links. Crosshair.
    ============================================ */
 
+@font-face {
+  font-family: 'Schmetterling';
+  src: url('fonts/Schmetterling-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sans Bullshit Sans CYR';
+  src: url('fonts/SansBullshitSansCYR.woff2') format('woff2'),
+       url('fonts/SansBullshitSansCYR.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Starpower';
+  src: url('fonts/StarpowerFill.woff2') format('woff2'),
+       url('fonts/StarpowerFill.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --black: #000000;
   --white: #ffffff;
-  --red: #e00000;
-  --paper: #fafaf5;
+  --red: #ff0fbf;
+  --paper: #ffffff;
   --rule: #000000;
-  --headline: 'Alumni Sans', 'Impact', 'Arial Black', sans-serif;
+  --headline: 'Starpower', 'Impact', 'Arial Black', sans-serif;
+  --headline-gothic: 'Schmetterling', 'Ruslan Display', var(--headline);
   --body: 'PT Sans', 'Helvetica Neue', 'Arial', sans-serif;
   --caption: 'PT Sans Caption', 'PT Sans', 'Arial', sans-serif;
-  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --mono: 'PT Mono', 'Courier New', monospace;
+  --font-bullshit: 'Sans Bullshit Sans CYR', var(--body);
 }
 
 /* RESET */
@@ -54,7 +82,7 @@ img { max-width: 100%; }
   font-family: var(--headline);
   font-weight: 700;
   font-size: 0.95rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   line-height: 1.25;
   overflow: hidden;
   white-space: nowrap;
@@ -139,17 +167,18 @@ img { max-width: 100%; }
 }
 
 .masthead__title {
-  font-family: var(--headline);
-  font-weight: 800;
+  font-family: var(--headline-gothic);
+  font-weight: 400;
   font-size: clamp(4.5rem, 14vw, 9rem);
-  line-height: 0.86;
+  line-height: 1.05;
   letter-spacing: 0.01em;
   padding: 0.25rem 0 0.1rem;
 }
 
+
 .masthead__subtitle {
-  font-family: var(--headline);
-  font-weight: 600;
+  font-family: 'Ruslan Display', var(--headline);
+  font-weight: 400;
   font-size: clamp(1.4rem, 3.5vw, 2rem);
   letter-spacing: 0.3em;
   line-height: 1.2;
@@ -183,7 +212,7 @@ img { max-width: 100%; }
   font-family: var(--headline);
   font-weight: 700;
   font-size: 1.1rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.03em;
   padding: 0.55rem 1.5rem;
   background: var(--black);
   color: var(--white);
@@ -275,7 +304,7 @@ img { max-width: 100%; }
   font-weight: 900;
   font-size: 14.5rem;
   line-height: 0.85;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--red);
   display: flex;
   align-items: center;
@@ -292,8 +321,8 @@ img { max-width: 100%; }
   font-family: var(--headline);
   font-weight: 800;
   font-size: 7rem;
-  line-height: 0.88;
-  letter-spacing: 0.01em;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   margin-bottom: 0.45rem;
 }
 
@@ -421,7 +450,7 @@ section > p {
   font-family: var(--headline);
   font-weight: 700;
   font-size: 1rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   background: var(--red);
   color: var(--white);
   padding: 0.25em 0.85em;
@@ -432,9 +461,15 @@ section > p {
 }
 
 .evidence-box__body {
+  font-family: var(--font-bullshit);
   padding: 2rem 1.25rem 1.25rem;
   font-size: 1.2rem;
   line-height: 1.65;
+}
+
+.evidence-box__body--font {
+  font-variant-ligatures: common-ligatures contextual;
+  font-feature-settings: "liga" 1, "clig" 1;
 }
 
 .evidence-box__note {
@@ -449,8 +484,9 @@ section > p {
 
 .censored {
   background: var(--black);
-  color: var(--black);
-  padding: 0.05em 0.2em;
+  color: var(--white);
+  font-family: var(--font-bullshit);
+  padding: 0.08em 0.25em;
   cursor: help;
   position: relative;
   font-weight: 700;
@@ -459,6 +495,104 @@ section > p {
 
 .censored::after {
   content: attr(data-word);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--white);
+  background: var(--red);
+  padding: 0.2em 0.5em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.evidence-box__body .censored::after {
+  font-family: var(--font-bullshit);
+}
+
+.censored:hover::after,
+.censored:focus::after { opacity: 1; }
+.censored:hover, .censored:focus { color: var(--white); }
+
+/* ============================================
+   DEMO
+   ============================================ */
+
+.demo-textarea {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: 0.7rem;
+  font-family: var(--font-bullshit);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--black);
+  background: var(--white);
+  border: 3px solid var(--black);
+  resize: vertical;
+  outline: none;
+}
+
+.demo-textarea:focus {
+  border-color: var(--red);
+}
+
+.demo-area .brutal-btn {
+  margin-top: 0.5rem;
+}
+
+.demo-output-wrap {
+  border: 3px solid var(--black);
+  margin-top: 0.6rem;
+  display: none;
+}
+
+.demo-output-wrap.demo-output--visible { display: block; }
+
+.demo-output {
+  margin: 0;
+  padding: 2rem 1.25rem 1.25rem;
+  background: var(--white);
+  border: none;
+  font-family: var(--font-bullshit);
+  font-size: 1.2rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--black);
+}
+
+.demo-output__note {
+  font-family: var(--caption);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  padding: 0.5rem 1.25rem;
+  border-top: 2px solid var(--black);
+  text-transform: uppercase;
+}
+
+.demo-output .bs-word {
+  background: var(--black);
+  color: var(--black);
+  padding: 0.05em 0.2em;
+  cursor: help;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.demo-output .bs-word:hover,
+.demo-output .bs-word:focus { color: var(--white); }
+
+.demo-output .bs-word::after {
+  content: attr(data-original);
   position: absolute;
   bottom: calc(100% + 6px);
   left: 50%;
@@ -476,79 +610,8 @@ section > p {
   z-index: 10;
 }
 
-.censored:hover::after,
-.censored:focus::after { opacity: 1; }
-.censored:hover, .censored:focus { color: var(--white); }
-
-/* ============================================
-   DEMO
-   ============================================ */
-
-.demo-textarea {
-  display: block;
-  width: 100%;
-  min-height: 120px;
-  padding: 0.7rem;
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--black);
-  background: var(--white);
-  border: 3px solid var(--black);
-  resize: vertical;
-  outline: none;
-}
-
-.demo-textarea:focus {
-  border-color: var(--red);
-}
-
-.demo-area .brutal-btn {
-  margin-top: 0.5rem;
-}
-
-.demo-output {
-  margin-top: 0.6rem;
-  padding: 0.85rem;
-  background: var(--white);
-  border: 3px solid var(--black);
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-break: break-word;
-  display: none;
-}
-
-.demo-output--visible { display: block; }
-
-.demo-output .bs-word {
-  background: var(--black);
-  color: var(--black);
-  padding: 0.05em 0.2em;
-  cursor: help;
-  position: relative;
-}
-
-.demo-output .bs-word:hover { color: var(--white); }
-
-.demo-output .bs-word::after {
-  content: attr(data-original);
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.65rem;
-  color: var(--white);
-  background: var(--red);
-  padding: 0.2em 0.5em;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.demo-output .bs-word:hover::after { opacity: 1; }
+.demo-output .bs-word:hover::after,
+.demo-output .bs-word:focus::after { opacity: 1; }
 
 .demo-stats {
   font-family: var(--mono);
@@ -556,12 +619,14 @@ section > p {
   letter-spacing: 0.05em;
   line-height: 1.4;
   text-transform: uppercase;
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
   display: none;
+  color: var(--black);
 }
 
-.demo-stats--visible {
+.demo-stats.demo-stats--visible {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.25rem;
 }
 
@@ -603,7 +668,7 @@ section > p {
   font-family: var(--headline);
   font-weight: 800;
   font-size: 1.4rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   line-height: 1.2;
   margin-bottom: 0.35rem;
 }
@@ -661,12 +726,14 @@ section > p {
 .spec-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
   border: 3px solid var(--black);
   margin: 0.6rem 0 1.25rem;
 }
 
 .spec-item {
   display: flex;
+  min-height: 2.25rem;
   border-bottom: 2px solid var(--black);
   border-right: 2px solid var(--black);
 }
@@ -678,19 +745,26 @@ section > p {
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  line-height: 1.35;
+  line-height: 1.25;
   background: var(--black);
   color: var(--white);
-  padding: 0.5rem 0.7rem;
-  min-width: 120px;
+  padding: 0.3rem 0.6rem;
+  min-width: 140px;
+  width: 140px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .spec-item__val {
-  padding: 0.5rem 0.7rem;
-  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.3;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
 }
 
 /* ============================================
@@ -739,26 +813,38 @@ section > p {
    ============================================ */
 
 .toggle {
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.1rem;
 }
 
 .toggle > summary {
   font-family: var(--headline);
   font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: 0.04em;
-  line-height: 1.3;
-  padding: 0.45rem 0.55rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  padding: 0.3rem 0.5rem;
   cursor: pointer;
   list-style: none;
   border: 2px solid var(--black);
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   user-select: none;
 }
 
 .toggle > summary::-webkit-details-marker { display: none; }
+
+.toggle > summary::after {
+  content: '▼';
+  margin-left: 0.5rem;
+  font-size: 0.85em;
+  opacity: 0.9;
+  transition: transform 0.2s ease;
+}
+
+.toggle[open] > summary::after {
+  transform: rotate(180deg);
+}
 
 .toggle > summary:hover {
   background: var(--black);
@@ -780,9 +866,9 @@ section > p {
 .toggle-letter {
   font-family: var(--headline);
   font-weight: 800;
-  font-size: 0.95rem;
-  width: 1.5em;
-  height: 1.5em;
+  font-size: 0.85rem;
+  width: 1.35em;
+  height: 1.35em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -832,7 +918,7 @@ section > p {
   font-family: var(--headline);
   font-weight: 800;
   font-size: 1.1rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.03em;
   line-height: 1.25;
   margin-bottom: 0.25rem;
 }
@@ -862,7 +948,7 @@ section > p {
   font-family: var(--headline);
   font-weight: 700;
   font-size: 1.05rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   line-height: 1.25;
 }
 
@@ -914,7 +1000,7 @@ section > p {
   font-family: var(--headline);
   font-weight: 700;
   font-size: 1rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   line-height: 1.35;
   margin-bottom: 0.25rem;
 }

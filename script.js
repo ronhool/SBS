@@ -96,95 +96,140 @@ document.querySelectorAll('.stat-block__num').forEach((el) => {
 // 5. Interactive demo — bullshit censor
 // -----------------------------------------------
 const BULLSHIT_WORDS = [
-  // Канцеляризмы
-  'принять к сведению', 'прошу рассмотреть возможность', 'ожидаем вашей позиции',
-  'по существу заданных вопросов', 'в соответствии с вышеизложенным',
-  'в целях совершенствования', 'настоящим уведомляем', 'просим ознакомиться',
-  // IT-англицизмы
-  'синкануться', 'засинкаться', 'синк', 'заапрувить', 'отфидбечить',
-  'замэтчиться', 'скипнуть', 'закоммититься', 'пошэрить', 'чекнуть',
-  'задеплоить', 'откатить',
-  // Давление
-  'надо было вчера', 'прямо сейчас', 'горящий дедлайн', 'аврал',
-  'чем быстрее, тем лучше',
-  // Инфантилизация
-  'человечек', 'задачка', 'отчётик', 'коллегушки', 'письмецо',
-  // Псевдопсихология / HR
-  'выйти из зоны комфорта', 'собрать энергию', 'перегрев команды',
-  'эмпат-кол', 'пейнпоинт', 'ретроградный Меркурий',
-  // Саботаж
-  'мне за это не платят', 'это не в моей зоне ответственности',
-  'обратитесь к моему руководителю',
-  // Прочее
-  'синергия', 'синергетическ', 'эффективность', 'инновационн',
-  'диджитал', 'прорывн', 'дисраптивн', 'agile', 'asap', 'асап',
-  'оптимизация штата',
+  // ЧУШЬ — инфантилизация, IT-сленг, англицизмы
+  'человечек', 'человечка', 'человечку', 'человечком', 'человечки', 'человечков',
+  'задачка', 'задачки', 'задачку', 'задачкой',
+  'отчётик', 'отчётики', 'отчётика',
+  'коллегушки', 'коллегушек',
+  'письмецо', 'письмеца', 'письмеце',
+  'синк', 'засинкаться', 'синкануть', 'синкануться', 'синканемся', 'засинканемся', 'синкаемся', 'синкнемся', 'синканёмся', 'синканусь', 'синкался', 'синкались',
+  'мэтч', 'смэтчиться', 'замэтчиться',
+  'апрув', 'апрувить', 'апрувнуть', 'апрувнул', 'апрувнули', 'заапрувить', 'заапрувнуть',
+  'фидбек', 'фидбэк', 'фидбэчить', 'отфидбэчить', 'отфидбэчим',
+  'чекнуть', 'чекни', 'чекну', 'чекал', 'чекали',
+  'скипнуть', 'закоммититься', 'пошэрить', 'задеплоить', 'откатить', 'пофиксить',
+  'ресёрч', 'ресёрчить', 'ресерч', 'ресерчить',
+  'менеджерить', 'менеджерю', 'менеджерим', 'менеджерит', 'отменеджерить',
+  'челлендж', 'челленджить',
+  'эджаил', 'агильный',
+  'вэлью', 'гуру', 'пивот', 'пич', 'рич', 'роадмап', 'хак', 'шеринг',
+  'асап', 'ASAP', 'асапчик',
+  'вкусный', 'услышимся', 'услышимся позже', 'зафиналить', 'зашло', 'взять на карандаш', 'крайний',
+  'кейс', 'кейса', 'кейсу', 'кейсом', 'кейсе', 'кейсы', 'кейсов', 'кейсам', 'кейсами', 'кейсах',
+  'бенчмарк', 'визионер', 'драйв', 'инсайт', 'креатив', 'кросс', 'майндсет', 'мета', 'нарратив', 'постмодерн',
+  'припарковать вопрос', 'припарковать тему',
+  // ДИЧЬ — псевдопсихология, пустые фразы
+  'я вас услышал', 'я тебя услышал', 'я вас услышала', 'я тебя услышала', 'я вас услышал(а)',
+  'я на колле', 'все так делают', 'мы же взрослые люди', 'так исторически сложилось', 'чтобы вы понимали',
+  'энергия пошла', 'собрать энергию', 'перегрев команды', 'ретроградный Меркурий', 'выйти из зоны комфорта',
+  'эмпат-кол', 'пейнпоинт', 'осознанность', 'эскапизм', 'урбанистика', 'симулякр', 'омниканальность',
+  'репрезентация', 'стейджинг', 'скейлинг', 'тренд', 'фасилитация', 'имплементация', 'иммерсивность',
+  'джентрификация', 'деконструкция', 'монетизация', 'продуктизация', 'проактивность', 'коллаборация',
+  'амбассадор', 'юнит экономика', 'экосистема', 'трансформация', 'синергия', 'сторителлинг', 'платформа',
+  'парадигма', 'релевантность', 'дисрапт', 'консёрн', 'у нас есть консёрн',
+  // ССАНИНА — давление, канцелярит
+  'надо было вчера', 'нужно было вчера', 'уже вчера надо было', 'прямо сейчас', 'горящий дедлайн', 'аврал',
+  'чем быстрее, тем лучше', 'это срочно', 'нужно срочно', 'очень срочно',
+  'принять к сведению', 'прошу рассмотреть возможность', 'просим рассмотреть возможность', 'просим рассмотреть', 'просим вас рассмотреть',
+  'ожидаем вашей позиции', 'по существу заданных вопросов', 'в соответствии с вышеизложенным', 'в целях совершенствования',
+  'настоящим уведомляем', 'просим ознакомиться',
+  'оптимизация штата', 'зона роста', 'точки роста',
+  // ENGLISH / JARGON — маркетинговый / IT-буллшит
+  'DRM', 'DNA', 'MVP', 'ROI', 'SEM', 'SEO', 'ASAP', 'asap', 'agile',
+  'analytics', 'alignment', 'algorithm', 'aggregator', 'accelerate',
+  'actionable', 'action items', 'accountability', 'at the end of the day',
+  'beta', 'big data', 'blueprint', 'bandwidth', 'brogrammer', 'bottom line',
+  'bounce rate', 'bleeding edge', 'best of breed', 'best practices',
+  'boil the ocean', 'below the frold', 'brand evangelist', 'bricks and clicks',
+  'bring to the party', 'bring to the table', 'curate', 'codify', 'crowdfund',
+  'collateral', 'credibility', 'coopetition', 'crowdsource', 'convergence',
+  'create value', 'change agent', 'clickthrough', 'come to Jesus',
+  'collaboration', 'close the loop', 'cross the chasm', 'content strategy',
+  'diversity', 'discovery', 'deep dive', 'disruptive', 'downsizing',
+  'data mining', 'digital divide', 'design pattern', 'digital natives',
+  'do more with less', 'drink the Kool Aid', 'epic', 'enable', 'empathy',
+  'engaging', 'emerging', 'entitled', 'eyeballs', 'engagement', 'enterprise',
+  'evangelist', 'exit strategy', 'eat your own dog food', 'flat', 'flow',
+  'fusion', 'funnel', 'funded', 'fanboy', 'finalize', 'freemium', 'fail fast',
+  'facetime', 'fail forward', 'first or best', 'guru', 'green', 'gamify',
+  'groupthink', 'growth hack', 'gamification', 'game changer',
+  'globalization', 'glamour metrics', 'HTML5 (html five)', 'homerun',
+  'holistic', 'headlights', 'heads down', 'high level', 'hyperlocal',
+  'herding cats', 'ignite', 'iconic', 'impact', 'innovate', 'ideation',
+  'immersive', 'integrated', 'infographic', 'impressions', 'in the weeds',
+  'jellyfish', 'kneedeep', 'lean', 'lean in', 'leverage', 'level up',
+  'long tail', 'lizard brain', 'low hanging fruit', 'maker', 'mashup',
+  'monetize', 'modernity', 'mindshare', 'milestone', 'make it pop',
+  'moving forward', 'marketing funnel', 'make the logo bigger', 'ninja',
+  'next gen', 'next level', 'netiquette', 'organic', 'optimize', 'offshoring',
+  'opportunity', 'outsourcing', 'over the top', 'out of pocket',
+  'on the runway', 'operationalize', 'open the kimono', 'outside the box',
+  'pop', 'ping', 'pivot', 'portal', 'pipeline', 'proactive', 'productize',
+  'public facing', 'paradigm shift', 'proof of concept', 'pull the trigger',
+  'push the envelope', 'peeling the onion', 'patent pending design',
+  'qualified leads', 'rich', 'rockstar', 'reach out', 'real time',
+  'responsive', 'rightsizing', 'reimagining', 'rightshoring', 'revolutionize',
+  'reinvent the wheel', 'sexy', 'scrum', 'shift', 'sizzle', 'sticky',
+  'startup', 'standup', 'synergy', 'strategy', 'solution', 'seamless',
+  'slam dunk', 'strateger y', 'sea change', 'soft launch', 'stakeholder',
+  'scalability', 'social proof', 'social media', 'stealth mode',
+  'storytelling', 'sustainability', 'social currency', 'stealth startup',
+  'sweat your assets', 'social media expert', 'scratch your own itch',
+  'tee off', 'tollgate', 'the cloud', 'tiger team', 'touch base',
+  'top of mind', 'touchpoints', 'transparent', 'trickthrough', 'team building',
+  'transgenerate', 'thought leader', 'take it offline', 'uber', 'user',
+  'unpack', 'unicorn', 'uniques', 'usercentric', 'viral', 'vision',
+  'visibility', 'value proposition', 'wizard', 'webinar', 'what is our solve',
 ];
 
 BULLSHIT_WORDS.sort((a, b) => b.length - a.length);
 
 const demoInput = document.getElementById('demo-input');
 const demoBtn = document.getElementById('demo-btn');
-const demoOutput = document.getElementById('demo-output');
 const demoStats = document.getElementById('demo-stats');
 
-if (demoBtn && demoInput && demoOutput) {
-  demoBtn.addEventListener('click', censorText);
+const DEMO_STORAGE_KEY = 'sbs-demo-text';
+
+if (demoInput) {
+  const saved = sessionStorage.getItem(DEMO_STORAGE_KEY);
+  if (saved) demoInput.value = saved;
+  demoInput.addEventListener('input', () => {
+    sessionStorage.setItem(DEMO_STORAGE_KEY, demoInput.value);
+  });
+}
+
+if (demoBtn && demoInput) {
+  demoBtn.addEventListener('click', checkBullshitLevel);
   demoInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
-      censorText();
+      checkBullshitLevel();
     }
   });
 }
 
-function censorText() {
+function checkBullshitLevel() {
   const raw = demoInput.value.trim();
   if (!raw) {
-    demoOutput.classList.remove('demo-output--visible');
     if (demoStats) demoStats.classList.remove('demo-stats--visible');
     return;
   }
 
-  // Work on raw text first, collect replacements, then escape & assemble
   let matchCount = 0;
-  const foundWords = [];
-  const placeholders = [];
-
-  // Mark matches in raw text using null-byte delimited placeholders
   let working = raw;
   BULLSHIT_WORDS.forEach((word) => {
     const pattern = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${pattern}[а-яёА-ЯЁ]*)`, 'gi');
-    working = working.replace(regex, (match) => {
+    working = working.replace(regex, () => {
       matchCount++;
-      if (!foundWords.includes(word)) foundWords.push(word);
-      const idx = placeholders.length;
-      placeholders.push(match);
-      return `\x00${idx}\x00`;
+      return '\x00';
     });
   });
-
-  // Now escape the remaining text (placeholders won't be affected since they use \x00)
-  let escaped = escapeHtml(working);
-
-  // Replace placeholders with actual HTML spans
-  escaped = escaped.replace(/\x00(\d+)\x00/g, (_, idxStr) => {
-    const orig = placeholders[parseInt(idxStr, 10)];
-    const bar = '\u2588'.repeat(Math.max(orig.length, 3));
-    return `<span class="bs-word" data-original="${escapeHtml(orig)}">${bar}</span>`;
-  });
-
-  demoOutput.innerHTML = escaped;
-  demoOutput.classList.add('demo-output--visible');
 
   if (demoStats) {
     const wordCount = raw.split(/\s+/).filter(Boolean).length;
     const pct = wordCount > 0 ? Math.round((matchCount / wordCount) * 100) : 0;
-    demoStats.innerHTML = `
-      <span>ОБНАРУЖЕНО: <span class="demo-stats__count">${matchCount} ${pluralize(matchCount, 'совпадение', 'совпадения', 'совпадений')}</span></span>
-      <span>УРОВЕНЬ БУЛЛШИТА: <span class="demo-stats__count">${pct}%</span></span>
-    `;
+    demoStats.innerHTML = `<span>УРОВЕНЬ БУЛЛШИТА: <span class="demo-stats__count">${pct}%</span></span>`;
     demoStats.classList.add('demo-stats--visible');
   }
 }

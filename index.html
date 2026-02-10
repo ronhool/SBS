@@ -7,7 +7,7 @@
   <meta name="description" content="Кириллический шрифт, который автоматически помечает корпоративный буллшит.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;500;600;700;800;900&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=PT+Sans+Caption:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=PT+Sans+Caption:wght@400;700&family=PT+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
@@ -31,8 +31,7 @@
         <span>ЦЕНА: БЕСПЛАТНО</span>
       </div>
       <div class="masthead__rule"></div>
-      <h1 class="masthead__title">SANS BULLSHIT SANS</h1>
-      <p class="masthead__subtitle">КИРИЛЛИЧЕСКАЯ ВЕРСИЯ</p>
+      <h1 class="masthead__title">Sans<br>Bullshit Sans<br>Cirillyc</h1>
       <div class="masthead__rule masthead__rule--thick"></div>
       <p class="masthead__tagline">Шрифт, который автоматически <span class="blackout">помечает</span> корпоративный буллшит и показывает, что на самом деле имеется в виду.</p>
       <div class="masthead__rule"></div>
@@ -41,7 +40,7 @@
     <!-- CTA -->
     <div class="cta-banner">
       <a href="#download" class="brutal-btn">СКАЧАТЬ ШРИФТ (БЕСПЛАТНО)</a>
-      <a href="#examples" class="brutal-btn brutal-btn--outline">ПРИМЕРЫ</a>
+      <a href="#solution" class="brutal-btn brutal-btn--outline">ПРИМЕРЫ</a>
       <a href="#how" class="brutal-btn brutal-btn--outline">ПОЧЕМУ ЭТО РАБОТАЕТ</a>
     </div>
 
@@ -88,12 +87,12 @@
     <section id="solution">
       <div class="section-label">КАК ЭТО РАБОТАЕТ</div>
       <h2 class="headline headline--sm">ВИЗУАЛЬНАЯ ЦЕНЗУРА</h2>
-      <p>Шрифт работает через OpenType-лигатуры. Когда он встречает слово из словаря буллшита, он заменяет всё слово на цензурную полосу.</p>
+      <p>Шрифт работает через OpenType-лигатуры. Когда он встречает слово из словаря буллшита, он помечает всё слово плашкой.</p>
 
       <div class="evidence-box" id="examples">
         <div class="evidence-box__stamp">ВЕЩДОК №1</div>
         <div class="evidence-box__body">
-          «Нам нужно <span class="censored" data-word="синкануться" tabindex="0">████████</span> с коллегами и <span class="censored" data-word="заапрувить" tabindex="0">████████████</span> процессы, чтобы обеспечить <span class="censored" data-word="синергетическую" tabindex="0">██████████████</span> эффективность.»
+          «Нам нужно <span class="censored" data-word="синкануться" tabindex="0">чушь</span> с коллегами и <span class="censored" data-word="заапрувить" tabindex="0">чушь</span> процессы, чтобы обеспечить <span class="censored" data-word="синергетическую" tabindex="0">чушь</span> эффективность.»
         </div>
         <div class="evidence-box__note">НАВЕДИТЕ НА ПОЛОСУ — УВИДИТЕ СКРЫТОЕ СЛОВО. НАЖМИТЕ — РАСКРОЕТСЯ.</div>
       </div>
@@ -105,12 +104,11 @@
     <section id="demo">
       <div class="section-label">ИНТЕРАКТИВ</div>
       <h2 class="headline headline--sm">ПОПРОБУЙТЕ НА СВОЁМ ТЕКСТЕ</h2>
-      <p>Вставьте пресс-релиз, отчёт или презентацию. Цензор заменит триггерные слова на чёрные плашки.</p>
+      <p>Вставьте пресс-релиз, отчёт или презентацию — узнайте, сколько в нём буллшита.</p>
 
       <div class="demo-area">
-        <textarea id="demo-input" class="demo-textarea" rows="5" placeholder="НАПИШИТЕ НЕМНОГО КОРПОРАТИВНОГО БУЛЛШИТА...">Коллеги, нам нужно синкануться по проекту и заапрувить новую стратегию. Прошу рассмотреть возможность выйти из зоны комфорта и закоммититься на инновационные решения. Надо было вчера. Человечек из отдела пошэрит отчётик asap.</textarea>
-        <button id="demo-btn" class="brutal-btn" type="button">ЦЕНЗУРИРОВАТЬ</button>
-        <div id="demo-output" class="demo-output"></div>
+        <textarea id="demo-input" class="demo-textarea" rows="5" placeholder="НАПИШИТЕ НЕМНОГО КОРПОРАТИВНОГО БУЛЛШИТА..."></textarea>
+        <button id="demo-btn" class="brutal-btn" type="button">ПРОВЕРИТЬ УРОВЕНЬ БУЛЛШИТА</button>
         <div class="demo-stats" id="demo-stats"></div>
       </div>
       <p class="fine-print">* Эффект работает в средах с поддержкой OpenType-лигатур. Здесь — имитация.</p>
@@ -164,7 +162,7 @@
         <div class="spec-item"><span class="spec-item__key">ЛИЦЕНЗИЯ</span><span class="spec-item__val">Apache License (Open Source)</span></div>
         <div class="spec-item"><span class="spec-item__key">ФОРМАТЫ</span><span class="spec-item__val">TTF, WOFF, WOFF2</span></div>
         <div class="spec-item"><span class="spec-item__key">СОВМЕСТИМОСТЬ</span><span class="spec-item__val">Веб, Google Docs, MS Office</span></div>
-        <div class="spec-item"><span class="spec-item__key">РАСШИРЕНИЕ</span><span class="spec-item__val">Chrome, Firefox</span></div>
+        <div class="spec-item"><span class="spec-item__key">РАСШИРЕНИЕ</span><span class="spec-item__val">В разработке</span></div>
       </div>
       <div class="cta-banner" id="download">
         <a href="#" class="brutal-btn brutal-btn--big">↓ СКАЧАТЬ ШРИФТ БЕСПЛАТНО</a>
@@ -183,12 +181,11 @@
             <tr><th>ИССЛЕДОВАНИЕ</th><th>ИСТОЧНИК</th><th>ДАННЫЕ</th><th>ССЫЛКА</th></tr>
           </thead>
           <tbody>
-            <tr><td>«Контур.Толк»</td><td>Опрос 1500 россиян, 2025</td><td>Канцеляризмы 28%, англицизмы 26%, давление 21%</td><td><a href="https://rb.ru/">RB.ru</a></td></tr>
-            <tr><td>HeadHunter</td><td>Опрос сотрудников, 2025</td><td>«человечек» 29%, «засинкаться» 22%</td><td><a href="https://myseldon.com/">MySeldon</a></td></tr>
-            <tr><td>Ростовский госуниверситет</td><td>Научная статья, 2023</td><td>Анализ деловых фразеологизмов</td><td><a href="https://cyberleninka.ru/">CyberLeninka</a></td></tr>
-            <tr><td>Кемеровский госуниверситет</td><td>Методич. материалы, 2013</td><td>Барьеры в деловом общении</td><td><a href="https://doc.mspi.moscow/">Doc.mspi</a></td></tr>
-            <tr><td>МИСИС</td><td>Наблюдения, 2024</td><td>Речевой портрет студента</td><td><a href="https://cyberleninka.ru/">CyberLeninka</a></td></tr>
-            <tr><td>SuperJob</td><td>Опрос, 2020</td><td>Раздражающие привычки коллег</td><td><a href="https://incrussia.ru/">IncRussia</a></td></tr>
+            <tr><td>«Контур.Толк»</td><td>Опрос 1500 россиян, 2025</td><td>Канцеляризмы 28%, англицизмы 26%, давление 21%</td><td><a href="https://kontur.ru/press/news/80762-shtampy_meshayut_delovomu_obshcheniyu" target="_blank" rel="noopener">kontur.ru</a></td></tr>
+            <tr><td>HeadHunter</td><td>Опрос сотрудников, 2025</td><td>«человечек» 29%, «засинкаться» 22%</td><td><a href="https://www.cnews.ru/news/line/2025-04-10_chelovechekotfidbechit" target="_blank" rel="noopener">cnews.ru</a></td></tr>
+            <tr><td>Ростовский госуниверситет</td><td>Научная статья, 2023</td><td>Анализ деловых фразеологизмов</td><td><a href="https://cyberleninka.ru/article/n/frazeologizmy-v-angloyazychnom-delovom-diskurse" target="_blank" rel="noopener">CyberLeninka</a></td></tr>
+            <tr><td>Белгородский госуниверситет</td><td>Научная статья, 2012</td><td>Барьеры в деловом общении</td><td><a href="https://cyberleninka.ru/article/n/kommunikativnye-bariery-v-delovom-obschenii-i-sposoby-ih-preodoleniya" target="_blank" rel="noopener">CyberLeninka</a></td></tr>
+            <tr><td>НИТУ МИСИС</td><td>Наблюдения, 2025</td><td>Речевой портрет студента</td><td><a href="https://cyberleninka.ru/article/n/shtrihi-k-rechevomu-portretu-sovremennogo-studenta-na-materiale-nablyudeniy-za-rechyu-studentov-nitu-misis" target="_blank" rel="noopener">CyberLeninka</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -291,11 +288,11 @@
 
     <!-- Gradation -->
     <section>
-      <h2 class="headline headline--sm">ГРАДАЦИЯ ЦЕНЗУРЫ</h2>
+      <h2 class="headline headline--sm">УРОВЕНЬ БУЛЛШИТА</h2>
       <div class="gradation-stack">
-        <div class="grad-bar grad-bar--red"><span class="grad-bar__label">БУЛЛШИТ</span><span class="grad-bar__level">КРИТИЧЕСКИЙ</span><span class="grad-bar__examples">«оптимизация штата», «принять к сведению»</span></div>
-        <div class="grad-bar grad-bar--blk"><span class="grad-bar__label">СЛОЖНО</span><span class="grad-bar__level">СРЕДНИЙ</span><span class="grad-bar__examples">«синкануться», «заапрувить»</span></div>
-        <div class="grad-bar grad-bar--wht"><span class="grad-bar__label">МЕМ</span><span class="grad-bar__level">МЯГКИЙ</span><span class="grad-bar__examples">«вкусный» (о дизайне), «ретроградный Меркурий»</span></div>
+        <div class="grad-bar grad-bar--red"><span class="grad-bar__label">ССАНИНА</span><span class="grad-bar__level">КРИТИЧЕСКИЙ</span><span class="grad-bar__examples">«оптимизация штата», «принять к сведению»</span></div>
+        <div class="grad-bar grad-bar--blk"><span class="grad-bar__label">ДИЧЬ</span><span class="grad-bar__level">СРЕДНИЙ</span><span class="grad-bar__examples">экосистема, трансформация, синергия, сторителлинг и пр.</span></div>
+        <div class="grad-bar grad-bar--wht"><span class="grad-bar__label">ЧУШЬ</span><span class="grad-bar__level">МЯГКИЙ</span><span class="grad-bar__examples">человечек, синк, смэтчиться, челлендж, асап и пр.</span></div>
       </div>
     </section>
 
