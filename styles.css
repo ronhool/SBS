@@ -15,8 +15,7 @@
 @font-face {
   font-family: 'Sans Bullshit Sans CYR';
   src: url('fonts/SansBullshitSansCYR-Regular.woff2') format('woff2'),
-       url('fonts/SansBullshitSansCYR-Regular.woff') format('woff'),
-       url('fonts/SansBullshitSansCYR-Regular.ttf') format('truetype');
+       url('fonts/SansBullshitSansCYR-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -24,8 +23,8 @@
 
 @font-face {
   font-family: 'Starpower';
-  src: url('fonts/StarpowerFill.woff2') format('woff2'),
-       url('fonts/StarpowerFill.woff') format('woff');
+  src: url('fonts/AA_STARPOWER-Regular.woff2') format('woff2'),
+       url('fonts/AA_STARPOWER-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
