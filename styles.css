@@ -226,6 +226,11 @@ img { max-width: 100%; }
   left: 0;
 }
 
+button.brutal-btn {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 .brutal-btn:hover {
   top: 4px;
   left: 4px;
@@ -668,6 +673,40 @@ section > p {
 
 .demo-area .brutal-btn {
   margin-top: 0.5rem;
+}
+
+.demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  margin-top: 0;
+}
+
+.demo-actions .brutal-btn {
+  margin-top: 0;
+}
+
+.demo-download-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.demo-download-block .download-formats {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.demo-download-block .download-formats a {
+  margin: 0 0.2em;
 }
 
 .demo-output-wrap {
@@ -1191,6 +1230,7 @@ section > p {
   .spec-item { border-right: none !important; }
   .spec-item:last-child { border-bottom: none; }
   .cta-banner { flex-direction: column; align-items: stretch; }
+  .demo-actions { flex-direction: column; align-items: stretch; }
   .brutal-btn { text-align: center; }
   .hero-split { flex-direction: column; }
   .hero-stat { font-size: 7rem; padding-right: 0; }

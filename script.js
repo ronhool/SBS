@@ -263,3 +263,34 @@ function pluralize(n, one, few, many) {
   if (n1 === 1) return one;
   return many;
 }
+
+// -----------------------------------------------
+// Share project button
+// -----------------------------------------------
+const shareBtn = document.getElementById('share-project-btn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    const url = window.location.href;
+    const title = document.title || 'Sans Bullshit Sans CYR';
+    const text = 'Шрифт, который помечает корпоративный буллшит.';
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, text, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        const oldText = shareBtn.textContent;
+        shareBtn.textContent = 'ССЫЛКА СКОПИРОВАНА';
+        setTimeout(() => { shareBtn.textContent = oldText; }, 2000);
+      }
+    } catch (e) {
+      if (e.name !== 'AbortError') {
+        try {
+          await navigator.clipboard.writeText(url);
+          const oldText = shareBtn.textContent;
+          shareBtn.textContent = 'ССЫЛКА СКОПИРОВАНА';
+          setTimeout(() => { shareBtn.textContent = oldText; }, 2000);
+        } catch (_) {}
+      }
+    }
+  });
+}
