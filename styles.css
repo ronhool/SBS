@@ -351,6 +351,10 @@ button.brutal-btn {
   font-weight: 700;
 }
 
+.headline--split .headline__line {
+  display: block;
+}
+
 .subheadline {
   font-family: var(--mono);
   font-size: 0.8rem;
@@ -1223,6 +1227,8 @@ section > p {
    ============================================ */
 
 @media (max-width: 768px) {
+  .headline--split .headline__line { display: inline; }
+  .headline--split .headline__line:not(:last-child)::after { content: ' '; }
   .paper { padding: 0 1rem 1.25rem; }
   .stat-row { grid-template-columns: repeat(2, 1fr); }
   .stat-block { border-bottom: 2px solid var(--black); }

@@ -271,7 +271,7 @@ const shareBtn = document.getElementById('share-project-btn');
 if (shareBtn) {
   shareBtn.addEventListener('click', async () => {
     const url = window.location.href;
-    const title = document.title || 'Sans Bullshit Sans CYR';
+    const title = document.title || 'Sans Bullshit Sans™ CYR';
     const text = 'Шрифт, который помечает корпоративный буллшит.';
     try {
       if (navigator.share) {
