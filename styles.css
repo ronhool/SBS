@@ -231,6 +231,111 @@ button.brutal-btn {
   -webkit-appearance: none;
 }
 
+/* ============================================
+   SHARE MODAL
+   ============================================ */
+
+.share-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+
+.share-modal.is-open {
+  display: block;
+}
+
+.share-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.share-modal__panel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(760px, calc(100vw - 2rem));
+  background: var(--white);
+  border: 3px solid var(--black);
+  box-shadow: 10px 10px 0 var(--black);
+  padding: 1.25rem 1.25rem 1rem;
+}
+
+.share-modal__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.share-modal__close {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 3px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  width: 44px;
+  height: 44px;
+  font-family: var(--headline);
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--black);
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.share-modal__close:hover {
+  top: 4px;
+  left: 4px;
+  box-shadow: 0 0 0 var(--black);
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.share-modal__title {
+  font-family: var(--headline);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05;
+  margin: 0.85rem 0 1rem;
+  text-align: center;
+}
+
+.share-modal__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.share-modal__grid .brutal-btn {
+  width: 100%;
+  text-align: center;
+}
+
+.share-modal__note {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  opacity: 0.8;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .share-modal__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .brutal-btn:hover {
   top: 4px;
   left: 4px;

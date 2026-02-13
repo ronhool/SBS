@@ -265,32 +265,103 @@ function pluralize(n, one, few, many) {
 }
 
 // -----------------------------------------------
-// Share project button
+// Share modal (social networks)
 // -----------------------------------------------
 const shareBtn = document.getElementById('share-project-btn');
-if (shareBtn) {
-  shareBtn.addEventListener('click', async () => {
-    const url = window.location.href;
-    const title = document.title || 'Sans Bullshit Sans™ CYR';
-    const text = 'Шрифт, который помечает корпоративный буллшит.';
-    try {
-      if (navigator.share) {
-        await navigator.share({ title, text, url });
-      } else {
-        await navigator.clipboard.writeText(url);
-        const oldText = shareBtn.textContent;
-        shareBtn.textContent = 'ССЫЛКА СКОПИРОВАНА';
-        setTimeout(() => { shareBtn.textContent = oldText; }, 2000);
-      }
-    } catch (e) {
-      if (e.name !== 'AbortError') {
-        try {
-          await navigator.clipboard.writeText(url);
-          const oldText = shareBtn.textContent;
-          shareBtn.textContent = 'ССЫЛКА СКОПИРОВАНА';
-          setTimeout(() => { shareBtn.textContent = oldText; }, 2000);
-        } catch (_) {}
-      }
+const shareModal = document.getElementById('share-modal');
+
+let lastFocusedEl = null;
+
+function getCanonicalUrl() {
+  const canonical = document.querySelector('link[rel="canonical"]');
+  const href = canonical?.href || window.location.href;
+  return href.split('#')[0];
+}
+
+function getSharePayload() {
+  const url = getCanonicalUrl();
+  const title = 'SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ';
+  return { url, title, text: title };
+}
+
+function updateShareLinks() {
+  if (!shareModal) return;
+  const { url, title, text } = getSharePayload();
+
+  const map = {
+    telegram: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
+    whatsapp: `https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`,
+    vk: `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+    x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+  };
+
+  shareModal.querySelectorAll('a[data-share]').forEach((a) => {
+    const key = a.getAttribute('data-share');
+    if (!key || !map[key]) return;
+    a.setAttribute('href', map[key]);
+  });
+}
+
+function openShareModal() {
+  if (!shareModal) return;
+  updateShareLinks();
+  lastFocusedEl = document.activeElement;
+  shareModal.classList.add('is-open');
+  shareModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  const first = shareModal.querySelector('[data-share=\"telegram\"]');
+  if (first && typeof first.focus === 'function') first.focus();
+}
+
+function closeShareModal() {
+  if (!shareModal) return;
+  shareModal.classList.remove('is-open');
+  shareModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') lastFocusedEl.focus();
+}
+
+if (shareBtn && shareModal) {
+  shareBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openShareModal();
+  });
+
+  shareModal.addEventListener('click', (e) => {
+    const t = e.target;
+    if (!(t instanceof Element)) return;
+
+    if (t.closest('[data-share-close]')) {
+      closeShareModal();
+      return;
     }
+
+    const shareEl = t.closest('[data-share]');
+    if (!shareEl) return;
+
+    const key = shareEl.getAttribute('data-share');
+    if (key === 'copy') {
+      (async () => {
+        try {
+          const { url } = getSharePayload();
+          await navigator.clipboard.writeText(url);
+          const old = shareEl.textContent;
+          shareEl.textContent = 'ССЫЛКА СКОПИРОВАНА';
+          setTimeout(() => { shareEl.textContent = old; }, 1600);
+        } catch (_) {}
+      })();
+      return;
+    }
+
+    // Close modal after clicking a social link
+    setTimeout(() => closeShareModal(), 50);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (!shareModal.classList.contains('is-open')) return;
+    closeShareModal();
   });
 }

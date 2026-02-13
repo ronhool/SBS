@@ -5,18 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ</title>
   <meta name="description" content="Кириллический шрифт, который автоматически помечает корпоративный буллшит.">
+  <link rel="canonical" href="https://ronhool.github.io/SBS/">
   <!-- Open Graph / sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ronhool.github.io/SBS/">
   <meta property="og:title" content="SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ">
   <meta property="og:description" content="SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ">
   <meta property="og:image" content="https://ronhool.github.io/SBS/share-card.png">
+  <meta property="og:image:secure_url" content="https://ronhool.github.io/SBS/share-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ">
   <meta property="og:locale" content="ru_RU">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ">
   <meta name="twitter:description" content="SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ">
   <meta name="twitter:image" content="https://ronhool.github.io/SBS/share-card.png">
+  <meta name="twitter:image:alt" content="SANS BULLSHIT SANS CYR — ШРИФТ, КОТОРЫЙ НЕ ЦЕРЕМОНИТСЯ">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Droid+Sans&family=Ruslan+Display&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=PT+Sans+Caption:wght@400;700&family=PT+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -54,7 +61,7 @@
     <div class="cta-banner">
       <a href="https://github.com/ronhool/SBS/raw/main/fonts/SansBullshitSansCYR-Regular.ttf" download="SansBullshitSansCYR-Regular.ttf" class="brutal-btn">СКАЧАТЬ ШРИФТ (БЕСПЛАТНО)</a>
       <a href="#demo" class="brutal-btn brutal-btn--outline">ПРИМЕРЫ</a>
-      <a href="#how" class="brutal-btn brutal-btn--outline">ПОЧЕМУ ЭТО РАБОТАЕТ</a>
+      <a href="#how" class="brutal-btn brutal-btn--outline">КАК ЭТО РАБОТАЕТ</a>
     </div>
 
     <div class="rule rule--double"></div>
@@ -339,6 +346,27 @@
     <div class="ticker__track ticker__track--reverse">
       БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull;
       БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull; БУЛЛШИТ &bull;
+    </div>
+  </div>
+
+  <!-- Share modal -->
+  <div class="share-modal" id="share-modal" aria-hidden="true">
+    <div class="share-modal__backdrop" data-share-close></div>
+    <div class="share-modal__panel" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+      <div class="share-modal__top">
+        <div class="section-label">ШЕРИНГ</div>
+        <button class="share-modal__close" type="button" aria-label="Закрыть" data-share-close>×</button>
+      </div>
+      <h3 class="share-modal__title" id="share-modal-title">ПОДЕЛИТЬСЯ</h3>
+      <div class="share-modal__grid">
+        <a class="brutal-btn brutal-btn--big" data-share="telegram" target="_blank" rel="noopener">TELEGRAM</a>
+        <a class="brutal-btn brutal-btn--big brutal-btn--outline" data-share="whatsapp" target="_blank" rel="noopener">WHATSAPP</a>
+        <a class="brutal-btn brutal-btn--big brutal-btn--outline" data-share="vk" target="_blank" rel="noopener">VK</a>
+        <a class="brutal-btn brutal-btn--big brutal-btn--outline" data-share="x" target="_blank" rel="noopener">X / TWITTER</a>
+        <a class="brutal-btn brutal-btn--big brutal-btn--outline" data-share="facebook" target="_blank" rel="noopener">FACEBOOK</a>
+        <button class="brutal-btn brutal-btn--big" type="button" data-share="copy">СКОПИРОВАТЬ ССЫЛКУ</button>
+      </div>
+      <p class="share-modal__note">Откроем выбранную сеть или скопируем ссылку.</p>
     </div>
   </div>
 
