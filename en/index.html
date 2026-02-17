@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sans Bullshit Sans Cyrillic — Font that marks corporate bullshit</title>
+  <meta name="description" content="Cyrillic font that automatically marks corporate buzzwords and highlights phrases that hide meaning. Open source, Apache License.">
+  <link rel="canonical" href="https://ronhool.github.io/SBS/en/">
+  <link rel="alternate" hreflang="ru" href="https://ronhool.github.io/SBS/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=PT+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="../fonts/SansBullshitSansCYR-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css?v=9">
+  <style>
+    .en-page .ticker { display: none; }
+    .en-page .masthead__tagline { max-width: 32em; margin-left: auto; margin-right: auto; }
+    .en-page .paper-footer__about p { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body class="en-page">
+
+  <div class="ticker">
+    <div class="ticker__track">
+      SYNERGY &bull; LEVERAGE &bull; PIVOT &bull; STORYTELLING &bull; ECOSYSTEM &bull; ASAP &bull;
+    </div>
+  </div>
+
+  <div class="paper">
+
+    <header class="masthead">
+      <div class="masthead__rule masthead__rule--thick"></div>
+      <div class="masthead__dateline">
+        <span>VER 2.0</span>
+        <span id="masthead-date-en">FEBRUARY 2026</span>
+        <span>PRICE: FREE</span>
+      </div>
+      <div class="masthead__rule"></div>
+      <h1 class="masthead__title">Sans<br>Bullshit Sans<br>Cyrillic</h1>
+      <div class="masthead__rule masthead__rule--thick"></div>
+      <p class="masthead__tagline">A font that automatically marks corporate bullshit and highlights phrases that hide meaning. Uses OpenType ligatures — no scripts, works in any app that supports ligatures.</p>
+      <div class="masthead__rule"></div>
+    </header>
+
+    <div class="cta-banner">
+      <a href="https://github.com/ronhool/SBS/raw/main/fonts/SansBullshitSansCYR-Regular.ttf" download="SansBullshitSansCYR-Regular.ttf" class="brutal-btn">DOWNLOAD FONT (FREE)</a>
+      <a href="../" class="brutal-btn brutal-btn--outline">RUSSIAN VERSION</a>
+    </div>
+
+    <div class="rule rule--double"></div>
+
+    <footer class="paper-footer">
+      <div class="rule rule--double"></div>
+      <div class="paper-footer__about">
+        <p>Sans Bullshit Sans Cyrillic is a modified and extended version of <a href="https://pixelambacht.nl/2015/sans-bullshit-sans/" target="_blank" rel="noopener">Sans Bullshit Sans</a> by Pixelambacht. Apache License 2.0.</p>
+      </div>
+      <div class="paper-footer__meta">
+        <p class="paper-footer__copyright"><span class="paper-footer__copyright-symbol">©</span> <a href="https://t.me/typefeed" target="_blank" rel="noopener">@typefeed</a> Artem Veretenko <span id="footer-year-en">2025–2026</span>.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = new Date();
+      var el = document.getElementById('masthead-date-en');
+      if (el) {
+        var months = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+        el.textContent = months[d.getMonth()] + ' ' + d.getFullYear();
+      }
+      var y = new Date().getFullYear();
+      var yearEl = document.getElementById('footer-year-en');
+      if (yearEl) yearEl.textContent = '2025–' + y;
+    })();
+  </script>
+</body>
+</html>
