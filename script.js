@@ -248,10 +248,6 @@ function updateShareLinks() {
 
   const map = {
     telegram: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
-    whatsapp: `https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`,
-    vk: `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
-    x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
   };
 
   shareModal.querySelectorAll('a[data-share]').forEach((a) => {
